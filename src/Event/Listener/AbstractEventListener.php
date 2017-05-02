@@ -14,6 +14,7 @@ namespace Dlart\DDD\Event\Listener;
 use Assert\Assertion;
 use Dlart\DDD\Event\EventInterface as Event;
 use Dlart\DDD\Event\Listener\EventListenerInterface as EventListener;
+use Verraes\ClassFunctions\ClassFunctions;
 
 /**
  * AbstractEventListener.
@@ -27,43 +28,13 @@ abstract class AbstractEventListener implements EventListener
      */
     public function handle(Event $event): void
     {
-        $this->assertThatHandleMethodForEventIsExist($event);
+        $handleMethodName = 'handle'.ClassFunctions::short($event);
 
-        $handleMethodName = $this->getHandleMethodNameForEvent($event);
-
-        $this->$handleMethodName($event);
-    }
-
-    /**
-     * @param Event $event
-     */
-    private function assertThatHandleMethodForEventIsExist(Event $event): void
-    {
         Assertion::methodExists(
-            $this->getHandleMethodNameForEvent($event),
+            $handleMethodName,
             $this
         );
-    }
 
-    /**
-     * @param Event $event
-     *
-     * @return string
-     */
-    private function getHandleMethodNameForEvent(Event $event): string
-    {
-        return 'handle'.$this->getNameOfEvent($event);
-    }
-
-    /**
-     * @param Event $event
-     *
-     * @return string
-     */
-    private function getNameOfEvent(Event $event): string
-    {
-        $fullyQualifiedEventClassParts = explode('\\', get_class($event));
-
-        return end($fullyQualifiedEventClassParts);
+        $this->$handleMethodName($event);
     }
 }
