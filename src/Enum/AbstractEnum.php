@@ -11,7 +11,7 @@
 
 namespace Dlart\DDD\Enum;
 
-use ReflectionClass;
+use Verraes\ClassFunctions\ClassFunctions;
 
 /**
  * AbstractEnum.
@@ -25,8 +25,6 @@ abstract class AbstractEnum
      */
     public static function toArray(): array
     {
-        return array_values(
-            (new ReflectionClass(static::class))->getConstants()
-        );
+        return ClassFunctions::constants(static::class);
     }
 }

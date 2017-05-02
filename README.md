@@ -2,7 +2,7 @@
 
 Tools for DDD projects.
 
-[![Current stable version](https://img.shields.io/badge/stable-1.3.2-green.svg?style=flat)](https://github.com/dlart/ddd/tree/1.3.2)
+[![Current stable version](https://img.shields.io/badge/stable-1.3.3-green.svg?style=flat)](https://github.com/dlart/ddd/tree/1.3.3)
 [![Minimum PHP version](https://img.shields.io/badge/php->=7.1.0-7c8cbf.svg?style=flat)](http://php.net/)
 [![Build status](https://travis-ci.org/dlart/ddd.svg?branch=master)](https://travis-ci.org/dlart/ddd)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
